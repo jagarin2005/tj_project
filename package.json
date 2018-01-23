@@ -1,0 +1,43 @@
+{
+    "name": "tj_project",
+    "version": "0.1.0",
+    "description": "JJ and Tod's Project",
+    "main": "webpack.config.js",
+    "scripts": {
+        "test": "echo Please rewrite test;",
+        "build": "webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jagarin2005/tj_project"
+    },
+    "author": "jagarin2005",
+    "license": "MIT",
+    "dependencies": {
+        "autoprefixer": "^7.2.5",
+        "bootstrap": "^4.0.0",
+        "exports-loader": "^0.6.4",
+        "font-awesome": "^4.7.0",
+        "imports-loader": "^0.7.1",
+        "lodash": "^4.17.4",
+        "popper.js": "^1.12.9",
+        "postcss-loader": "^2.0.10",
+        "precss": "^3.0.0",
+        "tether": "^1.4.3"
+    },
+    "devDependencies": {
+        "babel-loader": "^7.1.2",
+        "css-loader": "^0.28.9",
+        "extract-text-webpack-plugin": "^3.0.2",
+        "file-loader": "^1.1.6",
+        "font-awesome-loader": "^1.0.2",
+        "image-webpack-loader": "^3.4.2",
+        "jquery": "^3.3.1",
+        "node-sass": "^4.7.2",
+        "sass-loader": "^6.0.6",
+        "style-loader": "^0.19.1",
+        "transfer-webpack-plugin": "^0.1.4",
+        "url-loader": "^0.6.2",
+        "webpack": "^3.10.0"
+    }
+}
