@@ -4,8 +4,9 @@
     "description": "JJ and Tod's Project",
     "main": "webpack.config.js",
     "scripts": {
-        "test": "echo Please rewrite test;",
-        "build": "webpack"
+        "test": "echo Please write test;",
+        "start": "npx webpack --watch",
+        "build": "npx webpack"
     },
     "repository": {
         "type": "git",
@@ -27,6 +28,8 @@
     },
     "devDependencies": {
         "babel-loader": "^7.1.2",
+        "browser-sync": "^2.23.5",
+        "browser-sync-webpack-plugin": "^1.2.0",
         "css-loader": "^0.28.9",
         "extract-text-webpack-plugin": "^3.0.2",
         "file-loader": "^1.1.6",

@@ -1,42 +1,41 @@
-<!DOCTYPE html>
-<html>
+<?php include_once("./lib/conn.php"); ?>
+<?php 
+  $node = (isset($_GET["n"]) ? $_GET["n"] : "" );
+  $inc = ($node == "reg") 
+    ? "./public/register.php" 
+    : (($node == "lgn")
+    ? "./public/login.php"
+    : "./home.php");
+  
+?>
+<?php 
+  ob_start();
+  include_once("./components/head.php"); 
+  $buffer = ob_get_contents();
+  ob_end_clean();
 
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Title</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="./bundle.js"></script>
-</head>
+  $title = "หน้าหลัก";
+  $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+
+  echo $buffer;
+
+?>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a class="navbar-brand" href="#"><i class="fa fa-user fa-fw"></i> Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
-            </ul>
-            <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
-        </div>
-    </nav>
-    <section class="row">
-        <article class="col-12">
+  
+  <!-- navbar -->
+  <?php include_once("./components/navbar.php"); ?>
+  <!-- /navbar -->
 
-        </article>
-    </section>
+  <section class="container" id="wrapper">
+  <?php 
+    include_once($inc);
+  ?>
+  </section>
+
+  <!-- footer -->
+  <?php include_once("./components/foot.php"); ?>
+  <!-- /footer -->
 </body>
 
 </html>

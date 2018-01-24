@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const path = require('path');
 const precss = require('precss');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -15,9 +16,24 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       '$': 'jqeury',
-      jQuery: ' jquery',
+      jQuery: 'jquery',
+      Teher: 'tether',
       Popper: ['popper.js', 'default'],
-    })
+    }),
+    new BrowserSyncPlugin({
+      host: 'localhost',
+      port: 3000,
+      proxy: 'http://localhost:8000/tj_project/',
+      files: [
+        {
+          match: [
+            '**/*.php',
+            '**/*.scss',
+            '**/*.js'
+          ]
+        }
+      ]
+    }, { reload: false })
   ],
   output: {
     filename: 'bundle.js'
