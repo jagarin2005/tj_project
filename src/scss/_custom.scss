@@ -11,24 +11,45 @@ body {
 }
 
 nav.navbar {
+    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
 }
 
-.card {
+.card.position-absolute {
+    padding: 20px 40px;
+    left: 30%;
+    top: 15%;
+    width: 28rem;
+    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    -o-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
+        -webkit-box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
+        -moz-box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
         box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
     }
 }
 
+.alert {
+    -webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
+    -moz-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
+}
+
 footer {
     position: absolute;
-    padding: 2.5em 1.5em;
+    padding: 1.5rem 1.5rem;
     margin-top: 50px;
     min-height: 70px;
-    height: 100px;
+    height: 1rem;
     width: 100%;
+    -webkit-box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
     box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
     box-sizing: border-box;
     text-align: center;

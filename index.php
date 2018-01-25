@@ -1,41 +1,35 @@
 <?php include_once("./lib/conn.php"); ?>
 <?php 
   $node = (isset($_GET["n"]) ? $_GET["n"] : "" );
-  $inc = ($node == "reg") 
-    ? "./public/register.php" 
-    : (($node == "lgn")
-    ? "./public/login.php"
-    : "./home.php");
+  include_once("./lib/inc.php");
   
 ?>
-<?php 
-  ob_start();
-  include_once("./components/head.php"); 
-  $buffer = ob_get_contents();
-  ob_end_clean();
 
-  $title = "หน้าหลัก";
-  $buffer = preg_replace('/(<title>)(.*?)(<\/title>)/i', '$1' . $title . '$3', $buffer);
+<!DOCTYPE html>
+<html>
 
-  echo $buffer;
-
-?>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title><?php echo $title; ?></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="mask-icon" href="./safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
+  <script src="./bundle.js"></script>
+</head>
 
 <body>
-  
-  <!-- navbar -->
+
   <?php include_once("./components/navbar.php"); ?>
-  <!-- /navbar -->
 
-  <section class="container" id="wrapper">
-  <?php 
-    include_once($inc);
-  ?>
-  </section>
+  <?php include_once($inc); ?>
 
-  <!-- footer -->
-  <?php include_once("./components/foot.php"); ?>
-  <!-- /footer -->
+  <?php include_once("./components/footer.php"); ?>
+
 </body>
 
 </html>
