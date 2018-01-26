@@ -17,6 +17,9 @@
     "dependencies": {
         "autoprefixer": "^7.2.5",
         "bootstrap": "^4.0.0",
+        "datatables.net": "^1.10.16",
+        "datatables.net-bs4": "^1.10.16",
+        "ejs": "^2.5.7",
         "exports-loader": "^0.6.4",
         "font-awesome": "^4.7.0",
         "imports-loader": "^0.7.1",
@@ -34,6 +37,7 @@
         "extract-text-webpack-plugin": "^3.0.2",
         "file-loader": "^1.1.6",
         "font-awesome-loader": "^1.0.2",
+        "html-webpack-plugin": "^2.30.1",
         "image-webpack-loader": "^3.4.2",
         "jquery": "^3.3.1",
         "node-sass": "^4.7.2",

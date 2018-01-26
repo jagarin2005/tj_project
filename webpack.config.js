@@ -1,23 +1,23 @@
-const autoprefixer = require('autoprefixer');
+'use strict';
 const webpack = require('webpack');
 const path = require('path');
 const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
   entry: [
-    'tether',
-    'popper.js',
     'font-awesome/scss/font-awesome.scss',
     './src/scss/main.scss',
     './src/js/app.js'
   ],
   plugins: [
     new webpack.ProvidePlugin({
-      '$': 'jqeury',
+      $: 'jquery',
       jQuery: 'jquery',
-      Teher: 'tether',
+      'window.$': 'jquery',
+      'window.jQuery': 'jquery',
       Popper: ['popper.js', 'default'],
     }),
     new BrowserSyncPlugin({
@@ -42,7 +42,23 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader", "postcss-loader"]
+        use: [{
+          loader: 'style-loader',
+        },
+        {
+          loader: 'css-loader',
+        },
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: function () {
+              return [
+                precss,
+                autoprefixer
+              ];
+            }
+          }
+        }]
       },
       {
         test: /\.(scss)$/,
@@ -93,7 +109,11 @@ module.exports = {
       },
       {
         test: /bootstrap\/dist\/js\/umd\//, 
-        use: 'imports-loader?jQuery=jquery'
+        use: 'imports-loader?$=jquery'
+      },
+      {
+        test: /\.js$/,
+        use: 'imports-loader?define=>false'
       }
     ]
   }

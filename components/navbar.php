@@ -43,7 +43,9 @@
                   <div class="dropdown-menu" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#"><i class="fa fa-id-card-o fa-fw"></i> Profile</a>
                     <a class="dropdown-item" href="#"><i class="fa fa-cog fa-fw"></i> Setting</a>
-                    <div class="dropdown-divider"></div>
+                    ';
+                    echo '<a class="dropdown-item" href="index.php?n=dshb"><i class="fa fa-cog fa-fw"></i> Dashboard</a>';
+                    echo '<div class="dropdown-divider"></div>
                     <form id="lgt" method="post">
                       <button class="dropdown-item" name="lgt" value="true" form="lgt" type="submit" style="cursor: pointer;"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                     </form>
