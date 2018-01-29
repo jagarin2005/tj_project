@@ -10,3 +10,4 @@ dt(window, $);
 
 require("./datatable");
 require("./sidebar");
+require('./modal');

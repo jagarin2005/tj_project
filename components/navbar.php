@@ -1,7 +1,7 @@
 <!-- navbar -->
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
   <div class="container">
-    <a class="navbar-brand" href="./index.php">
+    <a class="navbar-brand" href="">
       Excellent 
       <span class="fa-stack fa-1x fa-fw" style="font-size: 0.75em;">
         <i class="fa fa-desktop fa-stack-2x"></i>
@@ -15,23 +15,23 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto mx-auto">
         <li class="nav-item px-3 <?php echo ($node == "") ? 'active' : "" ?>">
-          <a class="nav-link" href="index.php"><?php echo ($node == "") ? '<i class="fa fa-home fa-fw"></i>' : "" ?> Home <?php echo ($node == "") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+          <a class="nav-link" href="home"><?php echo ($node == "") ? '<i class="fa fa-home fa-fw"></i>' : "" ?> Home <?php echo ($node == "") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
-        <li class="nav-item px-3 <?php echo ($node == "sv") ? 'active' : "" ?>">
-          <a class="nav-link" href="index.php?n=sv"><?php echo ($node == "sv") ? '<i class="fa fa-wrench fa-fw"></i>' : "" ?> Service <?php echo ($node == "sv") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        <li class="nav-item px-3 <?php echo ($node == "service") ? 'active' : "" ?>">
+          <a class="nav-link" href="service"><?php echo ($node == "service") ? '<i class="fa fa-wrench fa-fw"></i>' : "" ?> Service <?php echo ($node == "sv") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
-        <li class="nav-item px-3 <?php echo ($node == "prc") ? 'active' : "" ?>">
-          <a class="nav-link" href="index.php?n=prc"><?php echo ($node == "prc") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Pricing <?php echo ($node == "prc") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        <li class="nav-item px-3 <?php echo ($node == "pricing") ? 'active' : "" ?>">
+          <a class="nav-link" href="pricing"><?php echo ($node == "pricing") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Pricing <?php echo ($node == "prc") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
       </ul>
       <?php 
       if (!$user->isLogin()) {
         echo '<ul class="navbar-nav my-2 my-lg-0">
-          <li class="nav-item';  echo ($node == "reg") ? ' active' : ""; echo '">
-            <a class="nav-link" href="./index.php?n=reg"> '; echo ($node == "reg") ? '<i class="fa fa-user-circle fa-fw"></i>' : ""; echo ' Register '; echo ($node == "reg") ? '<span class="sr-only">(current)</span>' : ""; echo '</a>
+          <li class="nav-item';  echo ($node == "register") ? ' active' : ""; echo '">
+            <a class="nav-link" href="register"> '; echo ($node == "register") ? '<i class="fa fa-user-circle fa-fw"></i>' : ""; echo ' Register '; echo ($node == "register") ? '<span class="sr-only">(current)</span>' : ""; echo '</a>
           </li>
-          <li class="nav-item '; echo ($node == "lgn") ? ' active' : ""; echo '">
-            <a class="nav-link" href="./index.php?n=lgn"> '; echo ($node == "lgn") ? '<i class="fa fa-sign-in fa-fw"></i>' : ""; echo ' Login '; echo ($node == "lgn") ? '<span class="sr-only">(current)</span>' : ""; echo '</a>
+          <li class="nav-item '; echo ($node == "login") ? ' active' : ""; echo '">
+            <a class="nav-link" href="login"> '; echo ($node == "login") ? '<i class="fa fa-sign-in fa-fw"></i>' : ""; echo ' Login '; echo ($node == "login") ? '<span class="sr-only">(current)</span>' : ""; echo '</a>
           </li>
         </ul>';
       } else {
@@ -41,10 +41,8 @@
                     <i class="fa fa-user fa-fw"></i> '.$_SESSION["name"].'
                   </a>
                   <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#"><i class="fa fa-id-card-o fa-fw"></i> Profile</a>
-                    <a class="dropdown-item" href="#"><i class="fa fa-cog fa-fw"></i> Setting</a>
-                    ';
-                    echo '<a class="dropdown-item" href="index.php?n=dshb"><i class="fa fa-cog fa-fw"></i> Dashboard</a>';
+                    <a class="dropdown-item" href=""><i class="fa fa-id-card-o fa-fw"></i> Profile</a>';
+                    echo '<a class="dropdown-item" href="dashboard"><i class="fa fa-cog fa-fw"></i> Dashboard</a>';
                     echo '<div class="dropdown-divider"></div>
                     <form id="lgt" method="post">
                       <button class="dropdown-item" name="lgt" value="true" form="lgt" type="submit" style="cursor: pointer;"><i class="fa fa-sign-out fa-fw"></i> Logout</a>

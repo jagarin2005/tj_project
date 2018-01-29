@@ -109,8 +109,44 @@
         return false;
       }
     }
+
+    public function checkLevel($lvl) : string {
+      switch ($lvl) {
+        case 1:
+          return "ผู้ใช้";
+          break;
+        
+        case 2: 
+          return "พนักงาน";
+          break;
+
+        case 99:
+          return "ผู้ดูแล";
+          break;
+
+        default:
+          return "-";
+          break;
+      }
+    }
+
+    public function checkStatus($status) : string {
+      switch ($status) {
+        case 1:
+          return "เปิด";
+          break;
+
+        case 0:
+          return "ปิด";
+          break;
+
+        default:
+          return "-";
+          break;
+      }
+    }
     
-    public function redirect ($uri = "index.php") {
+    public function redirect ($uri = "home") {
       header("Location: " . $uri);
     }
 

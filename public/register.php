@@ -31,7 +31,7 @@
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnReg"])) {
       if ($user->register($_POST["uemail"], $_POST["upass"], $_POST["uname"], 1)) {
-        $user->redirect("index.php?n=lgn");
+        $user->redirect("login");
       }
     }
   }
