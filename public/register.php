@@ -13,6 +13,9 @@
           <div class="form-group">
             <input class="form-control form-control-lg" type="text" name="uname" id="uname" placeholder="Full Name">
           </div>
+          <div class="form-group">
+            <input class="form-control form-control-lg" type="text" name="utel" id="utel" placeholder="Tel">
+          </div>
           <button class="btn btn-primary btn-lg btn-block" type="submit" form="reg" name="btnReg" value="true">Register</button>
         </form>
         <?php
@@ -30,7 +33,7 @@
 <?php
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnReg"])) {
-      if ($user->register($_POST["uemail"], $_POST["upass"], $_POST["uname"], 1)) {
+      if ($user->register($_POST["uemail"], $_POST["upass"], $_POST["uname"], $_POST["utel"], 1)) {
         $user->redirect("login");
       }
     }

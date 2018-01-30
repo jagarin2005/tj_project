@@ -14,14 +14,17 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto mx-auto">
-        <li class="nav-item px-3 <?php echo ($node == "") ? 'active' : "" ?>">
-          <a class="nav-link" href="home"><?php echo ($node == "") ? '<i class="fa fa-home fa-fw"></i>' : "" ?> Home <?php echo ($node == "") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        <li class="nav-item px-1 <?php echo ($node == "" || $node == "home") ? 'active' : "" ?>">
+          <a class="nav-link" href="home"><?php echo ($node == "" || $node == "home") ? '<i class="fa fa-home fa-fw"></i>' : "" ?> Home <?php echo ($node == "" || $node == "home") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
-        <li class="nav-item px-3 <?php echo ($node == "service") ? 'active' : "" ?>">
-          <a class="nav-link" href="service"><?php echo ($node == "service") ? '<i class="fa fa-wrench fa-fw"></i>' : "" ?> Service <?php echo ($node == "sv") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        <li class="nav-item px-1 <?php echo ($node == "service") ? 'active' : "" ?>">
+          <a class="nav-link" href="service"><?php echo ($node == "service") ? '<i class="fa fa-wrench fa-fw"></i>' : "" ?> Service <?php echo ($node == "service") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
-        <li class="nav-item px-3 <?php echo ($node == "pricing") ? 'active' : "" ?>">
-          <a class="nav-link" href="pricing"><?php echo ($node == "pricing") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Pricing <?php echo ($node == "prc") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        <li class="nav-item px-1 <?php echo ($node == "pricing") ? 'active' : "" ?>">
+          <a class="nav-link" href="pricing"><?php echo ($node == "pricing") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Pricing <?php echo ($node == "pricing") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        </li>
+        <li class="nav-item px-1 <?php echo ($node == "about") ? 'active' : "" ?>">
+          <a class="nav-link" href="about"><?php echo ($node == "about") ? '<i class="fa fa-laptop fa-fw"></i>' : "" ?> About <?php echo ($node == "about") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
       </ul>
       <?php 

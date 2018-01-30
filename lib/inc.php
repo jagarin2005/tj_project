@@ -19,7 +19,9 @@
   } else if ($node === "service") {
     $inc = "./public/service.php";
     $title = "Excellent Computer - Service";
-
+  } else if ($node === "about") {
+    $inc = "./public/about.php";
+    $title = "Excellent Computer - About";
   } else if ($user->isAdmin()) {
     if ($node === "dashboard") {
       $inc = "./public/admin/index.php";

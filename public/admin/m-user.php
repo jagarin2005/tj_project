@@ -1,23 +1,16 @@
 <?php
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["insUserBtn"])) {
-      $ins_user_stmt = $conn->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, 1, 2)");
+
+      $ins_user_stmt = $conn->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, :tel, 1, 2)");
       $ins_user_stmt->bindParam(":pass", $_POST["uPass"]);
       $ins_user_stmt->bindParam(":name", $_POST["uName"]);
       $ins_user_stmt->bindParam(":email", $_POST["uEmail"]);
+      $ins_user_stmt->bindParam(":tel", $_POST["uTel"]);
       $ins_user_stmt->execute();
 
-      $check_stmt = $conn->prepare("SELECT `user_id` FROM `user` WHERE `user_email` LIKE :email AND `user_name` LIKE :name");
-      $check_stmt->bindParam(":email", $_POST["uEmail"]);
-      $check_stmt->bindParam(":name", $_POST["uName"]);
-      $check_stmt->execute();
-      $check_row = $check_stmt->fetch(PDO::FETCH_ASSOC);
+      $user->redirect("manage-user");
 
-      $ins_staff_stmt = $conn->prepare("INSERT INTO `staff` VALUES (NULL, :name, :tel, :uid)");
-      $ins_staff_stmt->bindParam(":name", $_POST["uName"]);
-      $ins_staff_stmt->bindParam(":tel", $_POST["uTel"]);
-      $ins_staff_stmt->bindParam(":uid", $check_row["user_id"]);
-      $ins_staff_stmt->execute();
     }
 
     if (isset($_POST["delUserBtn"])) {
@@ -26,8 +19,11 @@
           $del_user_stmt = $conn->prepare("DELETE FROM `user` WHERE `user_id` = :uid");
           $del_user_stmt->bindParam(":uid", $_POST["uid"]);
           $del_user_stmt->execute();
+
+          $user->redirect("manage-user");
+
         } catch (PDOException $e) {
-          echo $e->getMessage();
+          // echo $e->getMessage();
         }
       } else if ($_POST["lvl"] == 2) {
         try {
@@ -38,8 +34,11 @@
           $del_user_stmt = $conn->prepare("DELETE FROM `user` WHERE `user_id` = :uid");
           $del_user_stmt->bindParam(":uid", $_POST["uid"]);
           $del_user_stmt->execute();
+
+          $user->redirect("manage-user");
+
         } catch (PDOException $e) {
-          echo $e->getMessage();
+          // echo $e->getMessage();
         }
       } 
     }
@@ -70,6 +69,7 @@
                   <tr>
                     <th scope="col">Email</th>
                     <th scope="col">Name</th>
+                    <th scope="col">Tel</th>
                     <th scope="col">Status</th>
                     <th scope="col"><i class="fa fa-cog"></i></th>
                   </tr>
@@ -83,6 +83,7 @@
                         <tr>
                           <td scope="row">'.$user_rows["user_email"].'</td>
                           <td>'.$user_rows["user_name"].'</td>
+                          <td>'.$user_rows["user_tel"].'</td>
                           <td>'.$user->checkStatus($user_rows["user_status"]).'</td>
                           <td>
                             <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delUserModal" data-uid="'.$user_rows["user_id"].'" data-lvl="'.$user_rows["user_level"].'"><i class="fa fa-times fa-fw"></i> ลบ</button>
@@ -112,14 +113,14 @@
                 </thead>
                 <tbody>
                   <?php
-                    $staff_stmt = $conn->prepare("SELECT * FROM `user` INNER JOIN `staff` ON `staff`.`user_id` = `user`.`user_id` WHERE `user_level` = 2");
+                    $staff_stmt = $conn->prepare("SELECT * FROM `user` WHERE `user_level` = 2");
                     $staff_stmt->execute();
                     while ($staff_rows = $staff_stmt->fetch(PDO::FETCH_ASSOC)) {
                       echo '
                         <tr>
                           <td scope="row">'.$staff_rows["user_email"].'</td>
                           <td>'.$staff_rows["user_name"].'</td>
-                          <td>'.$staff_rows["staff_tel"].'</td>
+                          <td>'.$staff_rows["user_tel"].'</td>
                           <td>'.$user->checkStatus($staff_rows["user_status"]).'</td>
                           <td>
                             <a href="edit-user?p='.$staff_rows["user_id"].'"><button class="btn btn-outline-info btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>

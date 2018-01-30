@@ -10,17 +10,18 @@
       $this->db = $db_con;
     }
 
-    public function register($email, $pass, $name, $lvl) {
+    public function register($email, $pass, $name, $tel, $lvl) {
       $check_stmt = $this->db->prepare("SELECT user_id FROM `user` WHERE `user_email` = :uemail");
       $check_stmt->bindParam(":uemail", $email);
       $check_stmt->execute();
       $check = $check_stmt->fetch(PDO::FETCH_ASSOC);
       if ($check_stmt->rowCount() == 0) {
         try {
-          $reg_stmt = $this->db->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, 1, :lvl)");
+          $reg_stmt = $this->db->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, :tel, 1, :lvl)");
           $reg_stmt->bindParam(":pass", $pass);
           $reg_stmt->bindParam(":name", $name);
           $reg_stmt->bindParam(":email", $email);
+          $reg_stmt->bindParam(":tel", $tel);
           $reg_stmt->bindParam(":lvl", $lvl);
           $reg_stmt->execute();
 

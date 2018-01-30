@@ -3,16 +3,17 @@
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["btnEditUser"])) {
       try {
-        $edit_staff_stmt = $conn->prepare("UPDATE `staff` AS `s` SET `s`.`staff_name` = :name, `s`.`staff_tel` = :tel WHERE `s`.`user_id` = :uid");
-        $edit_staff_stmt->bindParam(":name", $_POST["eName"]);
-        $edit_staff_stmt->bindParam(":tel", $_POST["eTel"]);
-        $edit_staff_stmt->bindParam(":uid", $uid);
-        $edit_staff_stmt->execute();
 
-        $edit_user_stmt = $conn->prepare("UPDATE `user` AS `u` SET `u`.`user_password` = :pass, `u`.`user_name` = :name, `u`.`user_email` = :email WHERE `u`.`user_id` = :uid");
+        $edit_user_stmt = $conn->prepare("UPDATE `user` AS `u` SET 
+                                        `u`.`user_password` = :pass, 
+                                        `u`.`user_name` = :name, 
+                                        `u`.`user_email` = :email,
+                                        `u`.`user_tel` = :tel 
+                                        WHERE `u`.`user_id` = :uid");
         $edit_user_stmt->bindParam(":pass", $_POST["ePass"]);
         $edit_user_stmt->bindParam(":name", $_POST["eName"]);
         $edit_user_stmt->bindParam(":email", $_POST["eEmail"]);
+        $edit_user_stmt->bindParam(":tel", $_POST["eTel"]);
         $edit_user_stmt->bindParam(":uid", $uid);
         $edit_user_stmt->execute();
         
@@ -37,7 +38,7 @@
       </nav>
       <hr>
       <?php
-      $user_stmt = $conn->prepare("SELECT * FROM `user` INNER JOIN `staff` ON `staff`.`user_id` = `user`.`user_id` WHERE `user`.`user_id` = :uid");
+      $user_stmt = $conn->prepare("SELECT * FROM `user` AS `u` WHERE `u`.`user_id` = :uid");
       $user_stmt->bindParam(":uid", $uid);
       $user_stmt->execute();
       $user_row = $user_stmt->fetch(PDO::FETCH_ASSOC);
@@ -69,7 +70,7 @@
         <div class="form-group row">
           <label for="uTel" class="col-sm-3 col-form-label">Tel.</label>
           <div class="col-sm-9">
-            <input type="text" class="form-control" id="eTel" name="eTel" value="'.$user_row["staff_tel"].'">
+            <input type="text" class="form-control" id="eTel" name="eTel" value="'.$user_row["user_tel"].'">
           </div>
         </div>
         <button class="btn btn-primary btn-block" type="submit" form="editUser" name="btnEditUser" value="true">แก้ไข</button>
