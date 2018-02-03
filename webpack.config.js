@@ -113,7 +113,13 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        use: 'imports-loader?define=>false'
+        use: [
+          'imports-loader?define=>false' 
+        ]
+      },
+      {
+        test: /\.exec\.js/,
+        use: [ 'script-loader' ]
       }
     ]
   }

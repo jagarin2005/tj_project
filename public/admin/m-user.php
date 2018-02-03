@@ -1,15 +1,33 @@
 <?php
+  $error_message = "";
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["insUserBtn"])) {
 
-      $ins_user_stmt = $conn->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, :tel, 1, 2)");
-      $ins_user_stmt->bindParam(":pass", $_POST["uPass"]);
-      $ins_user_stmt->bindParam(":name", $_POST["uName"]);
-      $ins_user_stmt->bindParam(":email", $_POST["uEmail"]);
-      $ins_user_stmt->bindParam(":tel", $_POST["uTel"]);
-      $ins_user_stmt->execute();
+      try {
+        $ins_user_stmt = $conn->prepare("INSERT INTO `user` VALUES (NULL, :pass, :name, :email, :tel, 1, 2)");
+        $ins_user_stmt->bindParam(":pass", $_POST["uPass"]);
+        $ins_user_stmt->bindParam(":name", $_POST["uName"]);
+        $ins_user_stmt->bindParam(":email", $_POST["uEmail"]);
+        $ins_user_stmt->bindParam(":tel", $_POST["uTel"]);
+        $ins_user_stmt->execute();
 
-      $user->redirect("manage-user");
+        $check_uid_stmt = $conn->prepare("SELECT `user_id` FROM `user` WHERE `user_email` LIKE :email AND `user_name` LIKE :name");
+        $check_uid_stmt->bindParam(":email", $_POST["uEmail"]);
+        $check_uid_stmt->bindParam(":name", $_POST["uName"]);
+        $check_uid_stmt->execute();
+        $uid_row = $check_uid_stmt->fetch(PDO::FETCH_ASSOC);
+
+        $ins_staff_stmt = $conn->prepare("INSERT INTO `staff` VALUES (NULL, :name, :tel, :uid)");
+        $ins_staff_stmt->bindParam(":name", $_POST["uName"]);
+        $ins_staff_stmt->bindParam(":tel", $_POST["uTel"]);
+        $ins_staff_stmt->bindParam(":uid", $uid_row["user_id"]);
+        $ins_staff_stmt->execute();
+
+        $user->redirect("manage-user");
+      } catch (PDOException $e) {
+        // echo $e->getMessage();
+        $error_message = "ไม่สามารถเพิ่มข้อมูลได้";
+      }
 
     }
 
@@ -24,6 +42,7 @@
 
         } catch (PDOException $e) {
           // echo $e->getMessage();
+          $error_message = "ไม่สามารถลบข้อมูลได้";
         }
       } else if ($_POST["lvl"] == 2) {
         try {
@@ -39,6 +58,7 @@
 
         } catch (PDOException $e) {
           // echo $e->getMessage();
+          $error_message = "ไม่สามารถลบข้อมูลได้";
         }
       } 
     }
@@ -58,6 +78,19 @@
         <a class="nav-item nav-link active" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="true">ผู้ใช้</a>
         <a class="nav-item nav-link" id="nav-staff-tab" data-toggle="tab" href="#nav-staff" role="tab" aria-controls="nav-staff" aria-selected="false">พนักงาน</a>
       </nav>
+
+      <?php
+      if (isset($error_message) && $error_message !== "") {
+        echo '
+        <div class="alert alert-warning alert-dismissible my-3 fade show" role="alert">
+          <strong>เกิดข้อผิดพลาด</strong> '.$error_message.'
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>';
+      }
+      ?>
+
       <br>
       <div class="tab-content" id="nav-tabContents">
 

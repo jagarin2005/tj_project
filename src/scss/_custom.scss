@@ -11,9 +11,9 @@ body {
 }
 
 nav.navbar {
-    -webkit-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
-    -moz-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 4px 3px rgba(0, 0, 0, 0.20);
+    -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }
 
 .card.position-absolute {
@@ -49,9 +49,9 @@ footer {
     height: 1rem;
     width: 100%;
     z-index: 1000 !important;
-    -webkit-box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
-    -moz-box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
-    box-shadow: 0 -8px 10px rgba(0, 0, 0, 0.19), 0 -6px 5px rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
     box-sizing: border-box;
     text-align: center;
     span {
