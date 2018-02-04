@@ -31,6 +31,25 @@
 
     }
 
+    if (isset($_POST["changeUserStatusBtn"])) {
+      try {
+        if ($_POST["sts"] == 1) {
+          $change_user_status_stmt = $conn->prepare("UPDATE `user` SET `user_status` = 0 WHERE `user_id` = :uid");
+          $change_user_status_stmt->bindParam(":uid", $_POST["uid"]);
+          $change_user_status_stmt->execute();
+        } else if ($_POST["sts"] == 0) {
+          $change_user_status_stmt = $conn->prepare("UPDATE `user` SET `user_status` = 1 WHERE `user_id` = :uid");
+          $change_user_status_stmt->bindParam(":uid", $_POST["uid"]);
+          $change_user_status_stmt->execute();
+        } else {
+          echo "Error!!!";
+        }
+        $user->redirect("manage-user");
+      } catch (PDOException $e) {
+        echo 'ERROR : '. $e->getMessage();
+      }
+    }
+
     if (isset($_POST["delUserBtn"])) {
       if ($_POST["lvl"] == 1) {
         try {
@@ -66,7 +85,7 @@
   
 ?>
 <div class="container-fluid" id="wrapper">
-  <div class="row d-flex d-md-block flex-nowrap wrapper">
+  <div class="row d-flex d-md-block flex-nowrap wrapper  clearfix">
     <?php include_once(__DIR__ . "/components/sidebar.php"); ?>
     <main class="col-md-10 col-12 float-left col px-5 pl-md-2 pt-2 main" id="main">
       <a href="#" data-target="#sidebar" data-toggle="collapse" id="toggleSidebar"><i class="fa fa-navicon fa-2x py-2 p-1"></i></a>
@@ -119,6 +138,7 @@
                           <td>'.$user_rows["user_tel"].'</td>
                           <td>'.$user->checkStatus($user_rows["user_status"]).'</td>
                           <td>
+                            <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#changeUserStatusModal" data-uid="'.$user_rows["user_id"].'" data-sts="'.$user_rows["user_status"].'"><i class="fa fa-exchange fa-fw"></i> เปลี่ยนสถานะ</button>
                             <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delUserModal" data-uid="'.$user_rows["user_id"].'" data-lvl="'.$user_rows["user_level"].'"><i class="fa fa-times fa-fw"></i> ลบ</button>
                           </td>
                         </tr>
@@ -157,6 +177,7 @@
                           <td>'.$user->checkStatus($staff_rows["user_status"]).'</td>
                           <td>
                             <a href="edit-user?p='.$staff_rows["user_id"].'"><button class="btn btn-outline-info btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>
+                            <button class="btn btn-outline-warning btn-sm" data-toggle="modal" data-target="#changeUserStatusModal" data-uid="'.$staff_rows["user_id"].'" data-sts="'.$staff_rows["user_status"].'"><i class="fa fa-exchange fa-fw"></i> เปลี่ยนสถานะ</button>
                             <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delUserModal" data-uid="'.$staff_rows["user_id"].'" data-lvl="'.$staff_rows["user_level"].'"><i class="fa fa-times fa-fw"></i> ลบ</button>
                           </td>
                         </tr>
@@ -225,6 +246,30 @@
   </div>
 </div>
 <!-- /Inert User Modal -->
+
+<!-- Change User Status Modal -->
+<div class="modal fade" id="changeUserStatusModal" tabindex="-1" role="dialog" aria-labelledby="changeUserStatusModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="changeUserStatusLabel">เปลี่ยนสถานะผู้ใช้</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="changeUserStatus">
+          <p>Are you sure to change user status <strong id="changeUserStatusText"></strong> ? </p>
+          <input type="hidden" name="uid" value="">
+          <input type="hidden" name="sts" value="">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline-secondary" type="button" data-dismiss="modal">ปิด</button>
+        <button class="btn btn-warning" type="submit" name="changeUserStatusBtn" form="changeUserStatus" value="true">เปลี่ยน</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Change User Status Modal -->
 
 <!-- Delete User Modal -->
 <div class="modal fade" id="delUserModal" tabindex="-1" role="dialog" aria-labelledby="delUserModal" aria-hidden="true">

@@ -6,6 +6,7 @@ body {
 }
 
 #wrapper {
+    margin-top: 56px;
     min-height: 100%;
     position: relative;
 }
@@ -44,7 +45,6 @@ nav.navbar {
 footer {
     position: absolute;
     padding: 1.5rem 1.5rem;
-    margin-top: 50px;
     min-height: 70px;
     height: 1rem;
     width: 100%;
@@ -68,7 +68,7 @@ footer {
 #sidebar .list-group {
     min-width: 300px;
     background-color: #333;
-    min-height: 110vh;
+    height: calc(200vh - 4rem);
 }
 
 #sidebar i {
@@ -204,3 +204,124 @@ footer {
 }
 
 // ---------------------------------------------------------------------
+// ---------------------------- Paper css ------------------------------
+.sheet {
+    margin: 0
+}
+
+@page {
+    margin: 0
+}
+
+.sheet {
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    page-break-after: always
+}
+
+div.A3 .sheet {
+    width: 297mm;
+    height: 419mm
+}
+
+div.A3.landscape .sheet {
+    width: 420mm;
+    height: 296mm
+}
+
+div.A4 .sheet {
+    width: 210mm;
+    height: 296mm
+}
+
+div.A4.landscape .sheet {
+    width: 297mm;
+    height: 209mm
+}
+
+div.A5 .sheet {
+    width: 148mm;
+    height: 209mm
+}
+
+div.A5.landscape .sheet {
+    width: 210mm;
+    height: 147mm
+}
+
+div.letter .sheet {
+    width: 216mm;
+    height: 279mm
+}
+
+div.letter.landscape .sheet {
+    width: 280mm;
+    height: 215mm
+}
+
+div.legal .sheet {
+    width: 216mm;
+    height: 356mm
+}
+
+div.legal.landscape .sheet {
+    width: 357mm;
+    height: 215mm
+}
+
+.sheet.padding-10mm {
+    padding: 10mm
+}
+
+.sheet.padding-15mm {
+    padding: 15mm
+}
+
+.sheet.padding-20mm {
+    padding: 20mm
+}
+
+.sheet.padding-25mm {
+    padding: 25mm
+}
+
+@media screen {
+    div.A4 {
+        background: #e0e0e0
+    }
+    .sheet {
+        background: #fff;
+        box-shadow: 0 .5mm 2mm rgba(0, 0, 0, .3);
+        margin: 5mm auto
+    }
+}
+
+@media print {
+    body.A3.landscape {
+        width: 420mm
+    }
+    body.A3,
+    body.A4.landscape {
+        width: 297mm
+    }
+    body.A4,
+    body.A5.landscape {
+        width: 210mm
+    }
+    body.A5 {
+        width: 148mm
+    }
+    body.legal,
+    body.letter {
+        width: 216mm
+    }
+    body.letter.landscape {
+        width: 280mm
+    }
+    body.legal.landscape {
+        width: 357mm
+    }
+}
+
+// ---------------------------------------------------------------------1

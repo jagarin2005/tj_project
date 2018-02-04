@@ -69,10 +69,28 @@
             return false;
           }
         } else {
+          $this->user_alert = "<strong>บัญชีผู้ใช้นี้ถูกปิดการใช้งาน</strong>";
           return false;
         }
       } else {
+        $this->user_alert = "<strong>อีเมล </strong>หรือ<strong> รหัสผ่าน</strong>ไม่ถูกต้อง";
         return false;
+      }
+    }
+
+    public function isActive ($status) {
+      switch ($status) {
+        case 0:
+          return false;
+          break;
+        
+        case 1:
+          return true;
+          break;
+        
+        default:
+          return false;
+          break;
       }
     }
 

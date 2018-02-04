@@ -38,11 +38,23 @@
     } else if ($node === "edit-user") {
       $inc = "./public/admin/e-user.php";
       $title = "Excellent Computer - แก้ไขผู้ใช้";
+    } else if ($node === "edit-check") {
+      $inc = "./public/admin/e-check.php";
+      $title = "Excellent Computer - แก้ไขงานซ่อม";
+    } else if ($node === "r-print") {
+      $inc = "./public/admin/r-print.php";
+      $title = "Excellent Computer - ใบแจ้งซ่อม";
     }
     
   } else if ($user->isStaff()) {
     if ($node === "dashboard") {
       $inc = "./public/staff/index.php";
+      $title = "Excellent Computer - ".$_SESSION["name"];
+    } else if ($node === "r-invoice") {
+      $inc = "./public/staff/r-invoice.php";
+      $title = "Excellent Computer - ".$_SESSION["name"];
+    } else if ($node === "profile") {
+      $inc = "./public/staff/profile.php";
       $title = "Excellent Computer - ".$_SESSION["name"];
     }
     

@@ -1,4 +1,4 @@
-<div class="carousel slide" id="carouselIndicators" data-ride="carousel">
+<div class="carousel slide" id="carouselIndicators" data-ride="carousel" style="margin-top: 56px;">
   <ol class="carousel-indicators">
     <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
     <li data-target="#carouselIndicators" data-slide-to="1"></li>

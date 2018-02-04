@@ -12,8 +12,6 @@
         } else {
           $user->user_alert = "ไม่สามารถเข้าสู่ระบบได้";
         }
-      } else {
-        $user->user_alert = "<strong>อีเมล </strong>หรือ<strong> รหัสผ่าน</strong>ไม่ถูกต้อง";
       }
     }
 

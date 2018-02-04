@@ -1,5 +1,5 @@
 <!-- navbar -->
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary d-print-none">
   <div class="container">
     <a class="navbar-brand" href="">
       Excellent 
@@ -43,8 +43,10 @@
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user fa-fw"></i> '.$_SESSION["name"].'
                   </a>
-                  <div class="dropdown-menu" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href=""><i class="fa fa-id-card-o fa-fw"></i> Profile</a>';
+                  <div class="dropdown-menu" aria-labelledby="userDropdown">';
+                  if(!$user->isAdmin()) {
+                    echo '<a class="dropdown-item" href="profile"><i class="fa fa-id-card-o fa-fw"></i> Profile</a>';
+                  }
                     echo '<a class="dropdown-item" href="dashboard"><i class="fa fa-cog fa-fw"></i> Dashboard</a>';
                     echo '<div class="dropdown-divider"></div>
                     <form id="lgt" method="post">

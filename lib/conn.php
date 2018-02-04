@@ -17,6 +17,8 @@
   }
 
   require_once('User.php');
+  require_once('Func.php');
   $user = new User($conn);
+  $func = new Func();
 
 ?>
