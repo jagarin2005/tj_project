@@ -136,7 +136,7 @@
       }
     }
 
-    public function checkLevel($lvl) : string {
+    public function checkLevel($lvl) {
       switch ($lvl) {
         case 1:
           return "ผู้ใช้";
@@ -156,7 +156,7 @@
       }
     }
 
-    public function checkStatus($status) : string {
+    public function checkStatus($status) {
       switch ($status) {
         case 1:
           return "เปิด";
