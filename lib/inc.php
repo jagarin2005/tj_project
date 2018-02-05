@@ -53,10 +53,16 @@
     } else if ($node === "r-invoice") {
       $inc = "./public/staff/r-invoice.php";
       $title = "Excellent Computer - ".$_SESSION["name"];
+    } else if ($node === "r-edit") {
+      $inc = "./public/staff/r-edit.php";
+      $title = "Excellent Computer - ".$_SESSION["name"];
+    } else if ($node === "r-print") {
+      $inc = "./public/staff/r-print.php";
+      $title = "Excellent Computer - ".$_SESSION["name"];
     } else if ($node === "profile") {
       $inc = "./public/staff/profile.php";
       $title = "Excellent Computer - ".$_SESSION["name"];
-    }
+    } 
     
   } else if ($user->isUser()) {
     if ($node === "dashboard") {

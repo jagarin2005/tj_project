@@ -1,6 +1,13 @@
+<div class="jumbotron jumbotron-fluid mt-5 bg-primary text-white">
+  <div class="container text-center py-3">
+    <h1 class="display-4">About</h1>
+    
+  </div>
+</div>
+
 <section class="container" id="wrapper">
   <article class="row">
-    <h1>About</h1>
+    
   </article>
 </section>
 

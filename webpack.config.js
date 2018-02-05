@@ -7,7 +7,6 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 // const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
-  'devtool': 'eval',
   'entry': [
     'font-awesome/scss/font-awesome.scss',
     './src/scss/main.scss',
@@ -19,6 +18,8 @@ module.exports = {
       'jQuery': 'jquery',
       'window.$': 'jquery',
       'window.jQuery': 'jquery',
+      'global.$': 'jquery',
+      'global.jQuery': 'jquery',
       'Popper': ['popper.js', 'default'],
     }),
     new BrowserSyncPlugin({
@@ -35,11 +36,12 @@ module.exports = {
         }
       ]
     }, { 'reload': false }),
-    new webpack.optimize.UglifyJsPlugin
+    // new webpack.optimize.UglifyJsPlugin
   ],
   'output': {
     'filename': 'bundle.js'
   },
+  'devtool': '#eval-source-map',
   'module': {
     'rules': [
       {
@@ -115,14 +117,32 @@ module.exports = {
       },
       {
         'test': /\.js$/,
-        'use': [
-          'imports-loader?define=>false',
-        ],
-      },
-      {
-        'test': /\.exec\.js/,
-        'use': [ 'script-loader' ]
+        'loader': 'babel-loader',
+        'exclude': /node_modules/,
+        'query': {
+          'presets': ['es2015']
+        },
       }
     ]
   }
 };
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map',
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      sourceMap: true,
+      compress: {
+        warnings: false
+      }
+    }),
+    new webpack.LoaderOptionsPlugin({
+      minimize: true
+    })
+  ])
+}

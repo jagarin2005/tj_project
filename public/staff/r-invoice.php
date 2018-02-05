@@ -55,23 +55,13 @@
           $ins_r_stmt->bindParam(":r_cost", $_POST["r_cost"]);
           $ins_r_stmt->bindParam(":staff", $_POST["r_staff"]);
           $ins_r_stmt->execute();
-          $user->redirect("manage-check");
+          $user->redirect("r-invoice");
         } catch (PDOException $e) {
           echo 'ERROR : '. $e->getMessage();
         }
       }
     }
 
-    if (isset($_POST["delRinvoiceBtn"])) {
-      try {
-        $del_r_stmt = $conn->prepare("DELETE FROM `r_invoice` WHERE `r_id` = :rid");
-        $del_r_stmt->bindParam(":rid", $_POST["rid"]);
-        $del_r_stmt->execute();
-        $user->redirect("manage-check");
-      } catch (PDOException $e) {
-        echo 'ERROR : '. $e->getMessage();
-      }
-    }
   }
 ?>
 
@@ -102,7 +92,9 @@
               <?php
                 $check_stmt = $conn->prepare("SELECT * FROM `r_invoice` AS `r`
                                               INNER JOIN `staff` AS `s` ON `s`.`staff_id` = `r`.`staff_id`
-                                              ORDER BY `r_date_in` DESC");
+                                              WHERE `s`.`staff_id` = :staff
+                                              ORDER BY `r`.`r_date_in` DESC");
+                $check_stmt->bindParam(":staff", $_SESSION["sid"]);
                 $check_stmt->execute();
                 while ($check_rows = $check_stmt->fetch(PDO::FETCH_ASSOC)) {
                   $date_in = date('d/m/Y', strtotime($check_rows["r_date_in"]));
@@ -119,8 +111,9 @@
                       <td>'.$func->rStatus($check_rows["r_status"]).'</td>
                       <td>
                         <a href="r-print?p='.$check_rows["r_id"].'"><button class="btn btn-outline-info btn-sm"><i class="fa fa-eye fa-fw"></i> ดู</button></a>
-                        <a href="edit-check?p='.$check_rows["r_id"].'"><button class="btn btn-outline-success btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>
-                        <button class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delRinvoiceModal" data-rid="'.$check_rows["r_id"].'"><i class="fa fa-times fa-fw"></i> ลบ</button>
+                        '.(($check_rows["r_status"] <= 3) 
+                            ? '<a href="r-edit?p='.$check_rows["r_id"].'"><button class="btn btn-outline-success btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>' 
+                            : "") . '
                       </td>
                     </tr>
                   ';
@@ -262,9 +255,10 @@
 
             <div class="form-group col-md-6">
               <label for="r_staff">ช่างผู้ซ่อม</label>
-              <select class="form-control" name="r_staff" id="r_staff">
+              <select class="form-control" name="r_staff" id="r_staff" readonly >
                 <?php 
-                  $staff_stmt = $conn->prepare("SELECT * FROM `staff` AS `s` INNER JOIN `user` AS `u` ON `u`.`user_id` = `s`.`user_id`");
+                  $staff_stmt = $conn->prepare("SELECT * FROM `staff` AS `s` INNER JOIN `user` AS `u` ON `u`.`user_id` = `s`.`user_id` WHERE `staff_id` = :staff");
+                  $staff_stmt->bindParam(":staff", $_SESSION["sid"]);
                   $staff_stmt->execute();
                   while ($staff_rows = $staff_stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo '<option value="'.$staff_rows["staff_id"].'">'.$staff_rows["user_name"].'</option>';

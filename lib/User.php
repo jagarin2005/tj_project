@@ -52,7 +52,14 @@
             return true;
 
           } else if ( $check["user_level"] == 2 ) {
+            $staff_stmt = $this->db->prepare("SELECT * FROM `staff` AS `s` 
+                                          INNER JOIN `user` AS `u` ON `u`.`user_id` = `s`.`user_id` 
+                                          WHERE `s`.`user_id` = :uid");
+            $staff_stmt->bindParam(":uid", $check["user_id"]);
+            $staff_stmt->execute();
+            $staff = $staff_stmt->fetch(PDO::FETCH_ASSOC);
             $_SESSION["uid"] = $check["user_id"];
+            $_SESSION["sid"] = $staff["staff_id"];
             $_SESSION["name"] = $check["user_name"];
             $_SESSION["email"] = $check["user_email"];
             $_SESSION["permission"] = "staff";

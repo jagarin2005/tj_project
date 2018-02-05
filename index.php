@@ -30,6 +30,39 @@
   <?php include_once($inc); ?>
 
   <?php include_once("./components/footer.php"); ?>
+  
+  <script>
+
+    function initMap() {
+
+      if(navigator.geolocation) {
+        let bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
+        navigator.geolocation.getCurrentPosition(function(position) {
+          geoFire.set("Person 1", [position.coords.latitude, position.coords.longitude]).then(function() {
+            console.log("Location added");
+          }).catch(function(err) {
+            console.log(err);
+          });
+          
+          var pos = new google.maps.LatLng(position.coords.latitude,
+                                          position.coords.longitude);
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 13,
+            center: bangkok_pos
+          });
+
+          var marker = new google.maps.Marker({
+            position: pos,
+            map: map,
+            title: 'Hello World!'
+          });
+        });
+      }
+      
+    }
+  </script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCkc5YY1gKzJuJKIJYJMXi_xSzAQYFi6Q&callback=initMap"></script>
 
 </body>
 

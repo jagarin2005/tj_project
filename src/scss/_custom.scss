@@ -47,7 +47,9 @@ footer {
     padding: 1.5rem 1.5rem;
     min-height: 70px;
     height: 1rem;
-    width: 100%;
+    display: flex;
+    left: 0;
+    right: 0;
     z-index: 1000 !important;
     -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
     -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
@@ -57,6 +59,11 @@ footer {
     span {
         display: inline-block;
     }
+}
+
+#map {
+    height: 400px;
+    width: 100%;
 }
 
 // ------------------------------- Sidebar --------------------------------
