@@ -7,9 +7,8 @@
         <h2>Map</h2>
       </div>
       <hr>
-      <div class="row">
-        <div class="col-12" id="map"></div>
-      </div>
+      <div class="col-12" id="map"></div>
     </main>
   </div>
 </div>
+

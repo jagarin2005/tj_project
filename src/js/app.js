@@ -8,8 +8,9 @@ window._ = _;
 import firebase from "firebase";
 window.firebase = firebase;
 
-import { GeoFire } from "geofire";
+import GeoFire from "geofire";
 window.GeoFire = GeoFire;
+
 
 import "bootstrap";
 import "bootstrap/scss/bootstrap.scss";
@@ -23,4 +24,3 @@ require('./modal');
 require('./form-validation');
 require('./map');
 
-dt(window, $);
