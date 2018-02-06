@@ -33,89 +33,93 @@
   <?php include_once("./components/footer.php"); ?>
 
   <script>
-  (function() {
+
     var config = {
       apiKey: "AIzaSyCBHrFjKrr_E3aQnyrI1-7lns_Tlz_ckMk",
       authDomain: "tj-project-57865.firebaseapp.com",
       databaseURL: "https://tj-project-57865.firebaseio.com",
       projectId: "tj-project-57865",
-      storageBucket: "",
+      storageBucket: "tj-project-57865.appspot.com",
       messagingSenderId: "883397627167"
     };
 
     firebase.initializeApp(config);
+    var firebaseRef = firebase.database();
 
-    var firebaseRef = firebase.database().ref().push();
-    var geoFire = new GeoFire(firebaseRef);
+    (function() {
 
-    var getLocation = function() {
-      if (typeof navigator !== "undefined" && typeof navigator.geolocation !== "undefined") {
-        console.log("Asking user to get their location");
-        navigator.geolocation.getCurrentPosition(geolocationCallback, errorHandler);
-      } else {
-        console.log("Your browser does not support the HTML5 Geolocation API, so this app not work.");
-      }
-    };
-
-    var geolocationCallback = function (location) {
-      var lat = location.coords.latitude;
-      var lng = location.coords.longitude;
-      console.log("Retrieved user's location : [" + lat + ", " + lng + "]");
-
+      var user_type = "<?php echo $_SESSION["permission"]; ?>";
       var username = "<?php echo ((isset($_SESSION["permission"]) && $_SESSION["permission"] === "staff" ) ? $_SESSION["name"] : "Guest" ); ?>";
-      geoFire.set(username, [lat,lng]).then(function() {
-        console.log("Current user " + username + "'s location has been added to GeoFire");
 
-        firebaseRef.child(username).onDisconnect().remove();
-        console.log("Added handler to remove user " + username + "grom GeoFire when you leave this page.");
-      }).catch(function(err) {
-        console.log("Error adding user " + username + "'s location to GeoFire");
-      });
-    }
+      var getLocation = function() {
+        if (typeof navigator !== "undefined" && typeof navigator.geolocation !== "undefined") {
+          console.log("Asking user to get their location");
+          navigator.geolocation.getCurrentPosition(geolocationCallback, errorHandler);
+        } else {
+          console.log("Your browser does not support the HTML5 Geolocation API, so this app not work.");
+        }
+      };
 
-    var errorHandler = function(err) {
-      if (err.code == 1) {
-        console.log("Error: PERMISSION_DENIED: User denied access to their location");
-      } else if (err.code === 2) {
-        console.log("Error: POSITION_UNAVAILABLE: Network is down or positioning satellites cannot be reached");
-      } else if (err.code === 3) {
-        console.log("Error: TIMEOUT: Calculating the user's location too took long");
-      } else {
-        console.log("Unexpected error code")
+      var geolocationCallback = function (location) {
+        let lat = location.coords.latitude;
+        let lng = location.coords.longitude;
+        console.log("Retrieved user's location : [" + lat + ", " + lng + "]");
+
+        firebaseRef.ref("staff/" + username).set({
+          name: username,
+          pos: {
+            lat: lat,
+            lng: lng
+          },
+          timestamp: +new Date()
+        });
+        console.log("send location to firebase");
+        // firebaseRef.child(username).onDisconnect().remove();
       }
-    };
 
-    getLocation();
+      var errorHandler = function(err) {
+        if (err.code == 1) {
+          console.log("Error: PERMISSION_DENIED: User denied access to their location");
+        } else if (err.code === 2) {
+          console.log("Error: POSITION_UNAVAILABLE: Network is down or positioning satellites cannot be reached");
+        } else if (err.code === 3) {
+          console.log("Error: TIMEOUT: Calculating the user's location too took long");
+        } else {
+          console.log("Unexpected error code")
+        }
+      };
 
-    // log
-    // function log(message) {
-    //   var childDiv = document.createElement("div");
-    //   var textNode = document.createTextNode(message);
-    //   childDev.appendChild(textNode);
-    //   document.getElementById("log").appendChild(childDiv);
-    // }
-  })();
+      if (user_type === "staff") {
+        getLocation();
+      }
+
+    })();
+
+    
 
     function initMap() {
 
-      if(navigator.geolocation) {
-        let bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
-        navigator.geolocation.getCurrentPosition(function(position) {       
-          var pos = new google.maps.LatLng(position.coords.latitude,
-                                          position.coords.longitude);
+      let bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
 
-          var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 13,
-            center: bangkok_pos
-          });
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 13,
+        center: bangkok_pos
+      });
 
+      var staffPosition = firebaseRef.ref("staff/");
+
+      staffPosition.on("value", function(snapshot) {
+        _.map(snapshot.val(), function(staff) {
+          // console.log(staff);
           var marker = new google.maps.Marker({
-            position: pos,
+            position: new google.maps.LatLng(staff.pos.lat, staff.pos.lng),
             map: map,
-            title: 'Hello World!'
+            title: staff.name
           });
-        });
-      }
+        })
+      }, function(err) {
+        console.log(err.code);
+      });
     }
   </script>
   

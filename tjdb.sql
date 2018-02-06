@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 05, 2018 at 06:44 AM
+-- Generation Time: Feb 06, 2018 at 09:00 AM
 -- Server version: 10.1.29-MariaDB
 -- PHP Version: 7.0.26
 
@@ -30,8 +30,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `pos` (
   `staff_id` int(11) DEFAULT NULL,
-  `p_lat` double NOT NULL DEFAULT '0',
-  `p_lon` double NOT NULL DEFAULT '0',
+  `p_lat` double(10,8) NOT NULL DEFAULT '0.00000000',
+  `p_lng` double(10,8) NOT NULL DEFAULT '0.00000000',
   `p_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
