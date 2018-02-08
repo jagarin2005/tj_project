@@ -19,7 +19,6 @@
         "bootstrap": "^4.0.0",
         "datatables.net": "^1.10.16",
         "datatables.net-bs4": "^1.10.16",
-        "ejs": "^2.5.7",
         "exports-loader": "^0.6.4",
         "firebase": "^4.9.1",
         "font-awesome": "^4.7.0",

@@ -20,6 +20,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="manifest.json">
   <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+  <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
   <meta name="theme-color" content="#ffffff">
   <script src="bundle.js"></script>
 </head>
@@ -46,6 +47,9 @@
     firebase.initializeApp(config);
     var firebaseRef = firebase.database();
 
+    /**
+     * get staff location and save on firebase
+     */
     (function() {
 
       var user_type = "<?php echo $_SESSION["permission"]; ?>";
@@ -90,20 +94,24 @@
       };
 
       if (user_type === "staff") {
-        getLocation();
+        setInterval(function() {
+          getLocation();
+        }, 5000);
       }
 
-    })();
+    })(); 
 
-    
-
+    /**
+     * init map and staff's marker 
+     */
     function initMap() {
 
-      let bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
+      var bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
+      var fashionI_pos = new google.maps.LatLng(13.8252695, 100.6762325);
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
-        center: bangkok_pos
+        center: fashionI_pos
       });
 
       var staffPosition = firebaseRef.ref("staff/");
@@ -116,6 +124,7 @@
             map: map,
             title: staff.name
           });
+          console.log(marker);
         })
       }, function(err) {
         console.log(err.code);

@@ -20,12 +20,13 @@
         <li class="nav-item px-1 <?php echo ($node == "service") ? 'active' : "" ?>">
           <a class="nav-link" href="service"><?php echo ($node == "service") ? '<i class="fa fa-wrench fa-fw"></i>' : "" ?> Service <?php echo ($node == "service") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
-        <li class="nav-item px-1 <?php echo ($node == "pricing") ? 'active' : "" ?>">
-          <a class="nav-link" href="pricing"><?php echo ($node == "pricing") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Pricing <?php echo ($node == "pricing") ? '<span class="sr-only">(current)</span>' : "" ?></a>
-        </li>
         <li class="nav-item px-1 <?php echo ($node == "about") ? 'active' : "" ?>">
           <a class="nav-link" href="about"><?php echo ($node == "about") ? '<i class="fa fa-laptop fa-fw"></i>' : "" ?> About <?php echo ($node == "about") ? '<span class="sr-only">(current)</span>' : "" ?></a>
         </li>
+        <li class="nav-item px-1 <?php echo ($node == "contact") ? 'active' : "" ?>">
+          <a class="nav-link" href="contact"><?php echo ($node == "contact") ? '<i class="fa fa-tags fa-fw"></i>' : "" ?> Contact us <?php echo ($node == "contact") ? '<span class="sr-only">(current)</span>' : "" ?></a>
+        </li>
+        
       </ul>
       <?php 
       if (!$user->isLogin()) {

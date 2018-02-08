@@ -25,5 +25,10 @@
       }
     }
 
+    public function toDate($date) {
+      $res =  date('d/m/Y', strtotime($date));
+      return $res;
+    }
+
   }
 ?>

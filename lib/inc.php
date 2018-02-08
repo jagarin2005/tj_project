@@ -13,9 +13,9 @@
   } else if ($node === "login") {
     $inc = "./public/login.php";
     $title = "Excellent Computer - Login";
-  } else if ($node === "pricing") {
-    $inc = "./public/pricing.php";
-    $title = "Excellent Computer - Pricing";
+  } else if ($node === "contact") {
+    $inc = "./public/contact.php";
+    $title = "Excellent Computer - Contact us";
   } else if ($node === "service") {
     $inc = "./public/service.php";
     $title = "Excellent Computer - Service";
