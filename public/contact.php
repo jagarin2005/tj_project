@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid mt-5 bg-primary text-white">
   <div class="container text-center py-3">
-    <h1 class="display-4">Contact Us <br><small class="text-light">ติดต่อเรา</small></h1>
+    <h1 class="display-4">Contact Us<br><small class="text-light">ติดต่อเรา</small></h1>
     
   </div>
 </div>

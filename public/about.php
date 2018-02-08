@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid mt-5 bg-primary text-white">
   <div class="container text-center py-3">
-    <h1 class="display-4">About <br><small class="text-light">เกี่ยวกับเรา</small></h1>
+    <h1 class="display-4">About<br><small class="text-light">เกี่ยวกับเรา</small></h1>
     
   </div>
 </div>
@@ -24,7 +24,7 @@
         </div>
         
         <div class="timeline-label">
-          <h2><a href="">ก้าวไปข้างหน้า</a></h2>
+          <h2>ก้าวไปข้างหน้า</h2>
           <p>ปี 2549-2555 เป็นงานซ่อม Pc และ Notebook ทั้ง Hardware และ Software อย่างเต็มรูปแบบ ปัจจุบันมีพนักงานประจำ จำนวน 6 คน
 	ดำเนินธุรกิจ : ซ่อม ประกอบ จำหน่าย อัพเกรด แก้ไขปัญหา Software และ Hardware คอมพิวเตอร์และ โน๊คบุ๊ค</p>
         </div>
@@ -62,7 +62,7 @@
         </div>
         
         <div class="timeline-label">
-          <h2><a href="">การตั้งตัว</a></h2>
+          <h2>การตั้งตัว</h2>
           <p>ปี 2545 เริ่มงานซ่อมเครื่อง PC / Notebook และยังคงรับเติมหมึก Printer อยู่ มีพนักงาน 4 คน</p>
         </div>
       </div>

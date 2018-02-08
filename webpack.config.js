@@ -4,7 +4,6 @@ const path = require('path');
 const precss = require('precss');
 const autoprefixer = require('autoprefixer');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 module.exports = {
   'entry': [

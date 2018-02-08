@@ -14,8 +14,6 @@ body {
 }
 
 nav.navbar {
-    -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
 }
 
@@ -24,23 +22,14 @@ nav.navbar {
     left: 30%;
     top: 15%;
     width: 28rem;
-    -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    -moz-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    -o-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
-        -webkit-box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
-        -moz-box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
         box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14), 0 15px 20px rgba(0, 0, 0, 0.20);
     }
 }
 
 .alert {
-    -webkit-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
-    -moz-box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15), 0 4px 5px rgba(0, 0, 0, 0.20);
 }
 
@@ -53,8 +42,6 @@ footer {
     left: 0;
     right: 0;
     z-index: 1000 !important;
-    -webkit-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
     box-shadow: 0 0px 4px rgba(0, 0, 0, 0.14), 0 -4px 8px rgba(0, 0, 0, 0.28);
     box-sizing: border-box;
     text-align: center;
@@ -197,18 +184,14 @@ footer {
 .collapsing {
     visibility: visible;
     height: 0;
-    -webkit-transition-property: height, visibility;
     transition-property: height, visibility;
-    -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
 
 .collapsing.width {
-    -webkit-transition-property: width, visibility;
     transition-property: width, visibility;
     width: 0;
     height: 100%;
-    -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
 }
 
@@ -357,11 +340,8 @@ img {
     height: auto;
     line-height: 1.428571429;
     max-width: 100%;
-    moz-transition: all .2s ease-in-out;
-    o-transition: all .2s ease-in-out;
     padding: 2px;
     transition: all .2s ease-in-out;
-    webkit-transition: all .2s ease-in-out;
 }
 
 .img-circle {
@@ -466,10 +446,6 @@ img {
     right: 0;
     margin-left: 0;
     margin-right: -9px;
-    -moz-transform: rotate(180deg);
-    -o-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);
-    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
 }
 
@@ -503,8 +479,6 @@ img {
     left: -100px;
     text-align: right;
     padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -527,15 +501,9 @@ img {
     display: block;
     width: 40px;
     height: 40px;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
     background-clip: padding-box;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
     border-radius: 20px;
     text-align: center;
-    -moz-box-shadow: 0 0 0 5px #f5f5f6;
-    -webkit-box-shadow: 0 0 0 5px #f5f5f6;
     box-shadow: 0 0 0 5px #f5f5f6;
     line-height: 40px;
     font-size: 15px;
@@ -577,11 +545,7 @@ img {
     background: #f5f5f6;
     padding: 1.7em;
     margin-left: 70px;
-    -webkit-background-clip: padding-box;
-    -moz-background-clip: padding;
     background-clip: padding-box;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
@@ -622,8 +586,6 @@ img {
 }
 
 .timeline-centered .timeline-entry .timeline-entry-inner .timeline-label h2 span {
-    -webkit-opacity: .6;
-    -moz-opacity: .6;
     opacity: .6;
     -ms-filter: alpha(opacity=60);
     filter: alpha(opacity=60);
