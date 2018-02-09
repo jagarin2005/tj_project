@@ -1,7 +1,7 @@
 {
-    "name": "Excellent",
-    "icons": [
-        {
+    "name": "Excellent Com",
+    "short_name": "Excellent Com",
+    "icons": [{
             "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
             "type": "image/png"
