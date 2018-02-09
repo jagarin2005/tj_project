@@ -1,7 +1,7 @@
 <!-- navbar -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary d-print-none">
   <div class="container">
-    <a class="navbar-brand" href="">
+    <a class="navbar-brand" href="#">
       Excellent 
       <span class="fa-stack fa-1x fa-fw" style="font-size: 0.75em;">
         <i class="fa fa-desktop fa-stack-2x"></i>

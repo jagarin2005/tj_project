@@ -8,13 +8,17 @@
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php echo $title; ?></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+  <meta name="description" content="ร้านรับซ่อมคอมพิวเตอร์และอุปกรณ์ ตั้งอยู่ที่ Fashion Island L4 ห้อง IT-14,<?php echo ($title!="home"?$title:""); ?>">
+  <meta name="keywords" content="Excellent Com,Excellent Computer,Fashion Island,ซ่อมคอม,ประกอบคอม,แฟชั่น ไอส์แลนด์,ซ่อมอุปกรณ์คอม,ซ่อมคอมพิวเตอร์,ประกอบคอมพิวเตอร์">
+  <meta name="author" content="jagarin2005">
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
