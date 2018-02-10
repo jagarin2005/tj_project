@@ -8,7 +8,7 @@
   }
 ?>
 
-<div class="jumbotron jumbotron-fluid mt-5 bg-primary text-white">
+<div class="jumbotron jumbotron-fluid mt-5 bg-primary text-white" style="margin-bottom: 0px;">
   <div class="container text-center py-3">
     <h1 class="display-4">ตรวจสอบสถานะการซ่อม <i class="fa fa-wrench fa-fw"></i></h1>
     <form class="needs-validation" method="post" id="searchR" novalidate>
@@ -29,7 +29,7 @@
   </div>
 </div>
 
-<section class="container" id="wrapper">
+<section class="container" id="wrapper" style="margin-top: 5px;">
   <article class="row">
   <?php
   if (isset($search_stmt)) {

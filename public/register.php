@@ -1,6 +1,6 @@
 <section class="container" id="wrapper">
   <article class="row">
-    <div class="card position-absolute">
+    <div class="card col-10 offset-1 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
       <div class="card-body">
         <h3 class="card-title text-center">REGISTER</h3><hr>
         <form method="post" id="reg">
