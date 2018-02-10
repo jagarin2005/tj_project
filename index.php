@@ -111,6 +111,7 @@
 
       var bangkok_pos = new google.maps.LatLng(13.736717, 100.523186);
       var fashionI_pos = new google.maps.LatLng(13.8252695, 100.6762325);
+      var markers = [];
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
@@ -120,6 +121,7 @@
       var staffPosition = firebaseRef.ref("staff/");
 
       staffPosition.on("value", function(snapshot) {
+        markers = [];
         _.map(snapshot.val(), function(staff) {
           // console.log(staff);
           var marker = new google.maps.Marker({
@@ -127,8 +129,8 @@
             map: map,
             title: staff.name
           });
-          console.log(marker);
-        })
+          markers.push(marker);
+        });
       }, function(err) {
         console.log(err.code);
       });
