@@ -5,6 +5,12 @@ pipeline {
       steps {
         sh 'php --version'
       }
+      steps {
+        sh 'npm install'
+      }
+      steps {
+        sh 'npm run build'
+      }
     }
   }
 }
