@@ -1,4 +1,4 @@
-<?php 
+<?php
   $rid = $_GET["p"];
   $r_stmt = $conn->prepare("SELECT * FROM `r_invoice` WHERE `r_id` = :rid");
   $r_stmt->bindParam(":rid", $rid);
@@ -6,7 +6,7 @@
   $row = $r_stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<style type="text/css" media="print"> 
+<style type="text/css" media="print">
   @page { size: A4 landscape; margin: 0mm; }
   @media print {
     header, footer, nav, aside, title{
@@ -14,14 +14,18 @@
     }
   }
   html { margin: 0px; }
+  body { }
 </style>
 
-<div class="A4 landscape">
+<div class="A4 landscape" style="font-family: Tahoma, Geneva, sans-serif;">
   <section class="sheet padding-10mm">
     <article class="container-fluid">
       <div class="row">
 
-        <div class="col-6" style="border: 1px solid #000">
+        <div class="col-6" style="border: 1px solid #000; font-family: Tahoma, Geneva, sans-serif;">
+          <div class="clearfix">
+            <div class="text-center"><h2>ใบประเมินราคา</h2></div>
+          </div>
           <div class="clearfix">
             <div class="pull-right"><span class="lead"><?php echo "เลขที่ใบแจ้งซ่อม : ".$row["r_id"]; ?></span></div>
           </div>
@@ -65,7 +69,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="clearfix">
-                  <?php  
+                  <?php
                     $staff_stmt = $conn->prepare("SELECT * FROM `user` INNER JOIN `staff` ON `staff`.`user_id` = `user`.`user_id` WHERE `staff`.`staff_id` LIKE :sid");
                     $staff_stmt->bindParam(":sid", $row["staff_id"]);
                     $staff_stmt->execute();
@@ -75,7 +79,7 @@
                     <span><?php echo "<p><strong>ช่างผู้ซ่อม : </strong>".$staff_row["user_name"]."</p>"; ?></span>
                     <div class=""><span><?php echo "<strong>สถานะการซ่อม : </strong>".$func->rStatus($row["r_status"]); ?></span></div><br>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="col-6">
@@ -87,8 +91,11 @@
             </div>
           </div>
         </div>
-        
-        <div class="col-6" style="border: 1px solid #000">
+
+        <div class="col-6" style="border: 1px solid #000;">
+          <div class="clearfix">
+            <div class="text-center"><h2>ใบประเมินราคา</h2></div>
+          </div>
           <div class="clearfix">
             <div class="pull-right"><span class="lead"><?php echo "เลขที่ใบแจ้งซ่อม : ".$row["r_id"]; ?></span></div>
           </div>
@@ -132,7 +139,7 @@
             <div class="row">
               <div class="col-6">
                 <div class="clearfix">
-                  <?php  
+                  <?php
                     $staff_stmt = $conn->prepare("SELECT * FROM `user` INNER JOIN `staff` ON `staff`.`user_id` = `user`.`user_id` WHERE `staff`.`staff_id` LIKE :sid");
                     $staff_stmt->bindParam(":sid", $row["staff_id"]);
                     $staff_stmt->execute();
@@ -142,7 +149,7 @@
                     <span><?php echo "<p><strong>ช่างผู้ซ่อม : </strong>".$staff_row["user_name"]."</p>"; ?></span>
                     <div class=""><span><?php echo "<strong>สถานะการซ่อม : </strong>".$func->rStatus($row["r_status"]); ?></span></div><br>
                   </div>
-                  
+
                 </div>
               </div>
               <div class="col-6">
@@ -157,5 +164,28 @@
 
       </div>
     </article>
+  </section>
+  <section class="sheet padding-10mm">
+    <div class="container-fluid">
+      <div class="col-6" style="border: 1px solid #000; padding: 10mm 0;">
+
+        <div class="text-center">
+          <h3 class="" href="#">
+            Excellent
+            <span class="fa-stack fa-1x fa-fw" style="font-size: 0.75em;">
+              <i class="fa fa-desktop fa-stack-2x"></i>
+              <i class="fa fa-wrench fa-flip-horizontal fa-stack-1x" style="top: -0.4215em;font-size: 0.8em;left: 0.075em;"></i>
+            </span>
+            Computer
+          </h3>
+          <h4>ใบเสร็จรับเงิน</h4>
+        </div>
+        <div class="" style="border: 1px solid #333; border-radius: 5px;">
+          <div class="">
+
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </div>
