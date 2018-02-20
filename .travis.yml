@@ -4,6 +4,7 @@ php:
 branches:
   only:
     - master
+    - develop
 script:
   - npm install
   - npm run build
