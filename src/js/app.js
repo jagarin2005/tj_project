@@ -17,3 +17,4 @@ import "./sidebar";
 import "./modal";
 import "./form-validation";
 import "./map";
+import "./print";

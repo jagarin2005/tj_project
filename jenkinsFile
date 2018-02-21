@@ -2,9 +2,11 @@ pipeline {
   agent { docker: 'php' }
   stages {
     stage('build') {
-      sh 'php --version'
-      sh 'npm install'
-      sh 'npm run build'
+      step {
+        sh 'php --version'
+        sh 'npm install'
+        sh 'npm run build'
+      }
     }
   }
 }

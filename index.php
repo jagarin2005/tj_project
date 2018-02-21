@@ -1,10 +1,10 @@
 <?php include_once("./lib/conn.php"); ?>
-<?php 
+<?php
   $node = trim((isset($_GET["n"]) ? $_GET["n"] : "" ));
   $param1 = trim((isset($_GET["p"]) ? $_GET["p"] : ""));
   // $param2 = trim((isset($_GET["t"]) ? $_GET["t"] : ""));
   include_once("./lib/inc.php");
-  
+
 ?>
 
 <!DOCTYPE html>
@@ -102,10 +102,10 @@
         }, 5000);
       }
 
-    })(); 
+    })();
 
     /**
-     * init map and staff's marker 
+     * init map and staff's marker
      */
     function initMap() {
 
@@ -136,7 +136,7 @@
       });
     }
   </script>
-  
+
   <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBHrFjKrr_E3aQnyrI1-7lns_Tlz_ckMk&callback=initMap">
   </script>

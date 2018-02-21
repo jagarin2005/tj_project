@@ -63,6 +63,27 @@ footer {
     flex: 1;
 }
 
+#print_tab {
+    position: fixed;
+    display: block;
+    top: 3.5rem;
+    left: 0;
+    padding: 12px 20px;
+    min-width: 60px;
+    max-width: 200px;
+    height: 50px;
+    z-index: 1003;
+    background: rgba(108, 117, 125, 1);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 4px rgba(0, 0, 0, 0.23);
+    transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+    color: #fff;
+    cursor: pointer;
+    &:hover {
+        background: rgba(120, 120, 123, 1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.14), 0 5px 10px rgba(0, 0, 0, 0.20);
+    }
+}
+
 // ------------------------------- Cover ----------------------------------
 .cover {
     left: 0;
@@ -617,4 +638,4 @@ img {
     filter: alpha(opacity=60);
 }
 
-// --------------------------------------------------------------------
+// ------------------------------------------------------------------
