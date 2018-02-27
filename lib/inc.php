@@ -45,7 +45,7 @@
       $inc = "./public/admin/r-print.php";
       $title = "Excellent Computer - ใบแจ้งซ่อม";
     }
-    
+
   } else if ($user->isStaff()) {
     if ($node === "dashboard") {
       $inc = "./public/staff/index.php";
@@ -62,13 +62,19 @@
     } else if ($node === "profile") {
       $inc = "./public/staff/profile.php";
       $title = "Excellent Computer - ".$_SESSION["name"];
-    } 
-    
+    }
+
   } else if ($user->isUser()) {
     if ($node === "dashboard") {
       $inc = "./public/user/index.php";
       $title = "Excellent Computer - ".$_SESSION["name"];
-    } 
+    } else if ($node === "profile") {
+      $inc = "./public/user/profile.php";
+      $title = "Excellent Conputer - ".$_SESSION["name"];
+    } else if ($node === "r-list") {
+      $inc = "./public/user/r-order.php";
+      $title = "Excellent Computer - ".$_SESSION["name"];
+    }
 
   } else {
     $inc =  "./public/404.php";

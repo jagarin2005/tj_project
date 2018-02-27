@@ -1,4 +1,4 @@
-<?php 
+<?php
   class Func {
 
     public function rStatus ($status) {
@@ -6,7 +6,7 @@
         case 0:
           return "ยกเลิก";
           break;
-        
+
         case 1:
           return "รอซ่อม";
           break;

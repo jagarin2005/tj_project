@@ -1,4 +1,4 @@
-<?php 
+<?php
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (isset($_POST["insRinvoiceBtn"])) {
@@ -9,10 +9,10 @@
           $user_stmt->execute();
           $user_row = $user_stmt->fetch(PDO::FETCH_ASSOC);
 
-          $ins_r_stmt = $conn->prepare("INSERT INTO `r_invoice` VALUES (NULL, :uid, :uname, :utel, 
+          $ins_r_stmt = $conn->prepare("INSERT INTO `r_invoice` VALUES (NULL, :uid, :uname, :utel,
                                                                         :r_date_in, :r_date_fin, NULL,
-                                                                        :r_type, :r_type2, :r_type2_desc, :r_model, 
-                                                                        :r_eq, :r_eq2, :r_eq3, 
+                                                                        :r_type, :r_type2, :r_type2_desc, :r_model,
+                                                                        :r_eq, :r_eq2, :r_eq3,
                                                                         :r_cost, 1, :staff)");
           $ins_r_stmt->bindParam(":uid", $user_row["user_id"]);
           $ins_r_stmt->bindParam(":uname", $user_row["user_name"]);
@@ -36,10 +36,10 @@
 
       } else if ($_POST["c_reg"] == "false") {
         try {
-          $ins_r_stmt = $conn->prepare("INSERT INTO `r_invoice` VALUES (NULL, NULL, :uname, :utel, 
+          $ins_r_stmt = $conn->prepare("INSERT INTO `r_invoice` VALUES (NULL, NULL, :uname, :utel,
                                                                         :r_date_in, :r_date_fin, NULL,
-                                                                        :r_type, :r_type2, :r_type2_desc, :r_model, 
-                                                                        :r_eq, :r_eq2, :r_eq3, 
+                                                                        :r_type, :r_type2, :r_type2_desc, :r_model,
+                                                                        :r_eq, :r_eq2, :r_eq3,
                                                                         :r_cost, 1, :staff)");
           $ins_r_stmt->bindParam(":uname", $_POST["c_name"]);
           $ins_r_stmt->bindParam(":utel", $_POST["c_tel"]);
@@ -111,9 +111,7 @@
                       <td>'.$func->rStatus($check_rows["r_status"]).'</td>
                       <td>
                         <a href="r-print?p='.$check_rows["r_id"].'"><button class="btn btn-outline-info btn-sm"><i class="fa fa-eye fa-fw"></i> ดู</button></a>
-                        '.(($check_rows["r_status"] <= 3) 
-                            ? '<a href="r-edit?p='.$check_rows["r_id"].'"><button class="btn btn-outline-success btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>' 
-                            : "") . '
+                        '.(($check_rows["r_status"] <= 3) ? '<a href="r-edit?p='.$check_rows["r_id"].'"><button class="btn btn-outline-success btn-sm"><i class="fa fa-edit fa-fw"></i> แก้ไข</button></a>' : "").'
                       </td>
                     </tr>
                   ';
@@ -256,7 +254,7 @@
             <div class="form-group col-md-6">
               <label for="r_staff">ช่างผู้ซ่อม</label>
               <select class="form-control" name="r_staff" id="r_staff" readonly >
-                <?php 
+                <?php
                   $staff_stmt = $conn->prepare("SELECT * FROM `staff` AS `s` INNER JOIN `user` AS `u` ON `u`.`user_id` = `s`.`user_id` WHERE `staff_id` = :staff");
                   $staff_stmt->bindParam(":staff", $_SESSION["sid"]);
                   $staff_stmt->execute();

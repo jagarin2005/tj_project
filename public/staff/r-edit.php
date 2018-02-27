@@ -1,6 +1,6 @@
-<?php 
+<?php
   $rid = $_GET["p"];
-  
+
   $r_stmt = $conn->prepare("SELECT * FROM `r_invoice` AS `r` INNER JOIN `staff` AS `s` ON `s`.`staff_id` = `r`.`staff_id` WHERE `r`.`r_id` = :rid");
   $r_stmt->bindParam(":rid", $rid);
   $r_stmt->execute();
@@ -9,7 +9,7 @@
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if (isset($_POST["editRinvoiceBtn"])) {
       try {
-        $edit_r_stmt = $conn->prepare("UPDATE `r_invoice` SET 
+        $edit_r_stmt = $conn->prepare("UPDATE `r_invoice` SET
                                        `r_date_fin` = :r_date_fin,
                                        `r_type` = :r_type,
                                        `r_type2` = :r_type2,
@@ -166,11 +166,11 @@
               <div class="form-group col-md-6">
                 <label for="r_staff">ช่างผู้ซ่อม</label>
                 <select class="form-control" name="r_staff" id="r_staff" disabled>
-                  <?php 
+                  <?php
                     $staff_stmt = $conn->prepare("SELECT * FROM `staff` AS `s` INNER JOIN `user` AS `u` ON `u`.`user_id` = `s`.`user_id`");
                     $staff_stmt->execute();
                     while ($staff_rows = $staff_stmt->fetch(PDO::FETCH_ASSOC)) {
-                      echo ($staff_rows["staff_id"] === $r_row["staff_id"]) 
+                      echo ($staff_rows["staff_id"] === $r_row["staff_id"])
                               ? '<option value="'.$staff_rows["staff_id"].'" selected>'.$staff_rows["user_name"].'</option>'
                               : '<option value="'.$staff_rows["staff_id"].'">'.$staff_rows["user_name"].'</option>';
                     }
@@ -183,11 +183,11 @@
               <div class="form-group col-md-6">
                 <label for="r_status">สถานะการซ่อม</label>
                 <select class="form-control" name="r_status" id="r_status">
-                  <option value="0" <?php echo ($r_row["r_status"] == 0) ? "selected" : "" ?>><?php echo $func->rStatus(0); ?></option>
-                  <option value="1" <?php echo ($r_row["r_status"] == 1) ? "selected" : "" ?>><?php echo $func->rStatus(1); ?></option>
-                  <option value="2" <?php echo ($r_row["r_status"] == 2) ? "selected" : "" ?>><?php echo $func->rStatus(2); ?></option>
-                  <option value="3" <?php echo ($r_row["r_status"] == 3) ? "selected" : "" ?>><?php echo $func->rStatus(3); ?></option>
-                  <option value="4" <?php echo ($r_row["r_status"] == 4) ? "selected" : "" ?>><?php echo $func->rStatus(4); ?></option>
+                <?php
+                  for ($i = 0; $i <= 4; $i++) {
+                    echo '<option value="'.$i.'" '.(($r_row["r_status"] == $i) ? "selected" : "").'>'.$func->rStatus($i).'</option>';
+                  }
+                ?>
                 </select>
               </div>
             </div>

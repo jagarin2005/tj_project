@@ -16,7 +16,7 @@
   html { margin: 0px; }
 </style>
 
-<div class="d-print-none" id="print_tab"><a id=""><i class="fa fa-print fa-fw"></i> Print</a></div>
+<div class="d-print-none" id="print_tab"><i class="fa fa-print fa-fw"></i> Print</div>
 <div class="A4 landscape" style="font-family: Tahoma, Geneva, sans-serif;">
   <div class="d-print-none mb-5 py-3"></div>
 
